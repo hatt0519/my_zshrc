@@ -1,11 +1,16 @@
 RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
-
+PROMPT="%{${fg[magenta]}%}%n$ %{${reset_color}%}"
 autoload -U compinit
 setopt prompt_subst
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
+bindkey -v
+
+setopt AUTO_CD
+
 cdls () { \cd "$@" && ls }
 
+alias ls='ls -GF'
 alias cd="cdls"
 alias rm='rm -i'
 alias cp='cp -i'
@@ -16,7 +21,6 @@ alias ks='t kill-session'
 alias list='t list-session'
 
 setopt share_history
-setopt auto_cd
 
 export PATH=/usr/local:$PATH
 fpath=(/usr/local/share/zsh-completions $fpath)
