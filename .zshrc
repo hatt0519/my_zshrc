@@ -3,9 +3,8 @@ autoload -U compinit
 setopt prompt_subst
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
-bindkey -v
+bindkey -e
 
-cdls () { \cd "$@" && ls }
 
 alias ls='ls -GF'
 alias cd="cdls"
@@ -18,6 +17,7 @@ alias ks='t kill-session'
 alias list='t list-session'
 
 
+cdls () { \cd "$@" && ls }
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
